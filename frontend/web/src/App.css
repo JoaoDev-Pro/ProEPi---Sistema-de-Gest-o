@@ -1,0 +1,396 @@
+/* frontend\web\src\App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #4F46E5; /* Indigo Moderno */
+  --primary-hover: #4338ca;
+  --secondary: #64748b; /* Slate Gray */
+  --bg-color: #f3f4f6; /* Cinza bem claro */
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* { box-sizing: border-box; outline: none; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  
+  /* Configuração para a imagem aparecer no Dashboard também (opcional) */
+  /* Se quiser a imagem só no login, remova as linhas abaixo */
+  background-image: url('./assets/bg-proepi.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efeito Parallax: imagem parada, conteúdo move */
+  background-blend-mode: initial; /* Mistura a imagem com o cinza para ficar suave */
+}
+
+/* --- LOGIN PAGE --- */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  /* Fundo específico do login */
+  background-image: url('./assets/bg-proepi.jpg');
+  background-size: cover;
+  background-position: center;
+  
+  /* Um degradê sutil sobre a imagem para garantir que o formulário destaque */
+  position: relative;
+}
+
+/* Camada de proteção visual (Overlay) para garantir leitura */
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.9); /* Deixa a imagem de fundo mais leve */
+  backdrop-filter: blur(2px); /* Leve desfoque para focar no formulário */
+  z-index: 1;
+}
+
+.login-form {
+  position: relative;
+  z-index: 2; /* Garante que o form fique acima do overlay */
+  background: rgba(255, 255, 255, 0.95); /* Fundo quase branco opaco */
+  padding: 3rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  
+  /* Sombra mais marcada para destacar do fundo desenhado */
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(0,0,0,0.05); /* Borda sutil */
+    
+  border-top: 4px solid var(--primary); /* Detalhe Indigo no topo do card */
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background-color: #f8fafc;
+}
+
+.login-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background-color: white;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+
+.login-btn:hover { background-color: var(--primary-hover); }
+
+/* --- DASHBOARD HEADER --- */
+header {
+  background: var(--card-bg);
+  height: 70px; /* Altura fixa definida */
+  padding: 0 2rem; /* Padding ajustado */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 20; /* Z-index maior que a barra de busca */
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  color: var(--text-main);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: #f1f5f9;
+  color: var(--danger);
+  border-color: #cbd5e1;
+}
+
+/* --- DASHBOARD CONTENT --- */
+/* Atualização da Barra de Ações */
+.actions {
+  position: sticky; /* O segredo está aqui */
+  top: 70px; /* Gruda logo abaixo do header (que tem 70px) */
+  z-index: 10; /* Fica acima dos produtos, mas abaixo do header */
+  
+  background-color: rgba(243, 244, 246, 0.90); /* Fundo quase opaco */
+  backdrop-filter: blur(8px); /* Efeito de vidro moderno */
+  border-bottom: 1px solid rgba(0,0,0,0.05); /* Linha sutil para separar */
+  
+  margin: 0 auto; /* Remove margem vertical para colar no header */
+  padding: 15px 20px; /* Espaçamento interno */
+  width: 100%; /* Ocupa a largura total para tapar os itens */
+  
+  /* Flexbox para alinhar conteúdo */
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 10px;
+}
+
+/* Precisamos de um container interno para manter a largura de 1200px
+   Como não mudamos o HTML, vamos usar um truque no CSS para alinhar
+   os elementos filhos diretos (input e button) */
+   
+.actions > * {
+  margin: 0 10px; /* Espaço entre a busca e o botão */
+}
+
+/* Ajuste fino na busca para alinhar no centro */
+.search-input {
+  flex-grow: 1;
+  max-width: 400px; /* Limita a largura da busca */
+  padding: 12px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 50px; /* Borda arredondada moderna */
+  font-size: 0.95rem;
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.no-results {
+  grid-column: 1 / -1; /* Ocupa toda a largura do grid */
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+  background: white;
+  border-radius: 16px;
+  border: 1px dashed #cbd5e1;
+}
+
+.add-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(79, 70, 229, 0.4);
+}
+
+.grid-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 0 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- CARD DESIGN --- */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain; /* Mostra a foto inteira sem cortar */
+  background-color: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.desc {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita a 3 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.stock-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.stock-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stock-value.low { color: var(--danger); }
+
+.card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.btn-in { background-color: #dcfce7; color: #166534; }
+.btn-in:hover { background-color: #bbf7d0; }
+
+.btn-out { background-color: #fee2e2; color: #991b1b; }
+.btn-out:hover { background-color: #fecaca; }
+
+.btn-del {
+  margin-top: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px dashed #cbd5e1;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.btn-del:hover { background: #fff1f2; color: var(--danger); border-color: var(--danger); }
+
+/* --- MODAL --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  animation: fadeIn 0.2s;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s;
+}
+
+.modal h2 { margin-top: 0; color: var(--text-main); }
+.modal label { font-weight: 500; color: var(--text-main); margin-bottom: 5px; display: block; font-size: 0.9rem; margin-top: 10px;}
+.modal input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px; }
+
+.modal-buttons { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.modal-buttons button { padding: 10px 20px; border-radius: 8px; font-weight: 500; border: none; cursor: pointer; }
+.btn-cancel { background: #f1f5f9; color: var(--text-main); }
+.btn-confirm { background: var(--primary); color: white; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

@@ -1,0 +1,27 @@
+# Dependências do Node (ficam pesadas e são geradas pelo npm install)
+node_modules/
+backend/node_modules/
+frontend/web/node_modules/
+
+# Arquivos de Build
+dist/
+build/
+frontend/web/build/
+
+# Variáveis de Ambiente e Segredos (NUNCA SUBIR ISSO)
+.env
+backend/.env
+backend/src/config/serviceAccountKey.json
+
+# Logs e arquivos de sistema
+*.log
+.DS_Store
+Thumbs.db
+
+# Configurações de IDE
+.vscode/
+.idea/
+
+#textos
+estrutura.txt
+script.txt
