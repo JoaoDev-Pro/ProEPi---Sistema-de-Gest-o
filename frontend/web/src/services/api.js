@@ -1,11 +1,10 @@
-// frontend\web\src\services\api.js
 import axios from 'axios';
 
+// Define a URL base: usa a variável de ambiente se existir, senão usa localhost
 const api = axios.create({
-  baseURL: 'http://localhost:3001/api', // Endereço do seu Backend
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001/api',
 });
 
-// Interceptor para adicionar o Token em toda requisição
 api.interceptors.request.use(async (config) => {
   const token = localStorage.getItem('token');
   if (token) {
