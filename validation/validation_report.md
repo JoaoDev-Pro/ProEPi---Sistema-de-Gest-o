@@ -2,7 +2,7 @@
 
 *Projeto:* ProEPI Manager - Sistema Multiplataforma de Gestão de Estoque de EPIs
 *Etapa:* Etapa 2 - Validação com Público-Alvo
-*Data da Validação:* Novembro/2024
+*Data da Validação:* Novembro/2025
 *Público-Alvo Validado:* Equipe de Segurança do Trabalho da CETUS Construtora
 
 ----
@@ -46,3 +46,6 @@ A metodologia consistiu em:
 ## 4. Conclusão e Próximos Passos
 
 O teste confirmou que o ProEPI Manager atende à *necessidade real de controle de estoque* da CETUS. A validação visual (Dashboard) e o fluxo de cadastro e movimentação foram testados pelo público-alvo.
+
+📄 Resumo da Validação do ProEPI Manager
+A Etapa 2 - Validação com Público-Alvo do projeto ProEPI Manager ocorreu em Novembro/2025. O sistema, projetado para solucionar o problema de controle manual e divergência de estoque de EPIs da CETUS Construtora, foi validado pela Equipe de Segurança do Trabalho da empresa, especificamente com o responsável, Pedro Iwyck, em Belo Horizonte - MG.
