@@ -5,7 +5,7 @@
 *Data da Validação:* Novembro/2024
 *Público-Alvo Validado:* Equipe de Segurança do Trabalho da CETUS Construtora
 
----
+----
 
 ## 1. Contexto e Objetivo
 
@@ -18,7 +18,7 @@ A validação buscou confirmar se o sistema atende aos seguintes Requisitos Func
 *RF-03: Registro de Movimentações* (Entrada/Saída sem vincular a colaborador específico).
 *RF-04: Dashboard/Visualização Geral* (Conferência visual e estoque atual).
 
----
+----
 
 ## 2. Metodologia de Validação
 
@@ -30,7 +30,7 @@ A metodologia consistiu em:
 2. *Teste de Usabilidade:* O responsável testou a usabilidade do sistema, incluindo o cadastro de itens de EPIs.
 3. *Coleta de Feedback:* Discussão e coleta de impressões sobre a aderência do sistema à necessidade real de controle de estoque.
 
----
+----
 
 ## 3. Evidências de Validação
 
@@ -41,7 +41,7 @@ A metodologia consistiu em:
 | *Comprovação de Uso* |Imagens do dashboard (Luva SS azul/preto - Estoque Atual 80; Óculos Fume - Estoque Atual 20). | validation/evidence/ |
 | *Feedback Coletado* | [Resumo do feedback de Pedro Iwyck] | validation/feedback/ |
 
----
+----
 
 ## 4. Conclusão e Próximos Passos
 
